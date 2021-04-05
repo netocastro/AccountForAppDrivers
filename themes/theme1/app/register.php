@@ -1,8 +1,6 @@
 <?php $v->layout('_template') ?>
 
-<center>
-    <h1 class="text-light">Register</h1>
-</center>
+<h1 class="text-light text-center">Register</h1>
 
 <div style="display: flex; align-items: center; justify-content: center;">
 
@@ -27,6 +25,6 @@
 
 <?php $v->start('js'); ?>
 
-<script src="<?= url('themes/theme1/js/register.js'); ?>"></script>
+<script src="<?= url('themes/theme1/app/js/register.js'); ?>"></script>
 
 <?php $v->end(); ?>

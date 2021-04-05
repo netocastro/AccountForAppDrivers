@@ -2,9 +2,6 @@ $(document).ready(function(){
 
 	$('#form-login').on('submit',function(event) {
 		event.preventDefault();
-		/*console.log(rota);
-		console.log('rota');*/
-
 		let dadosForm = $('#form-login');
 
 		$.ajax({
@@ -15,11 +12,9 @@ $(document).ready(function(){
 			success: function(data) {
 				console.log(data);
 				validateFields(data,dadosForm);
-
 				if(data == 'redirect'){
 					window.location.href = rota;
 				}
-				
 			},
 			error: function(error) {
 				console.log(error);
@@ -50,17 +45,11 @@ $(document).ready(function(){
 		if(data.userNotExist){	
 			$(`input[name=password]`).addClass('is-invalid');
 			$(`input[name=password]`).after(`<div id='password' class='text-danger'>informações inválidas</div>`)
-
 		}
 
 		if(data.validateFields){	
 			$(`input[name=email]`).addClass('is-invalid');
 			$(`input[name=email]`).after(`<div id='password' class='text-danger'>Formato do campo invalido Ex: teste@teste.com</div>`)
-
 		}
-		validateFields
-
-
 	}
-	
 });
