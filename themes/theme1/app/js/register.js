@@ -23,7 +23,10 @@ $(document).ready(function(){
 	
 	function validateFields(data, dadosForm) {
 
-		let arrayForm = dadosForm.serializeArray();	
+		let arrayForm = dadosForm.serializeArray();
+		console.log(dadosForm);	
+		console.log(dadosForm.button);	
+		console.log(dadosForm.clientTop);	
 
 		arrayForm.forEach(element => {
 			if(element.name != "apps[]"){ // dar um jeito de tirar esse carái;
@@ -31,6 +34,7 @@ $(document).ready(function(){
 				$('#'+ element.name).fadeOut().remove();
 			}
 		});
+		$('#success').fadeOut().remove();
 
 		if(data.emptyFields){
 			data.emptyFields.forEach(element => {	
@@ -44,12 +48,16 @@ $(document).ready(function(){
 			for (const field in fields) {
 				console.log(fields[field]);
 				$(`input[name=${field}]`).addClass('is-invalid');
-				$(`input[name=${field}]`).after(`<div id='${field}' class='text-danger'>${fields[field]}</div>`)
+				if(field == 'apps'){
+					$(`.form-check"`).after(`<div id='${field}' class='text-danger'>${fields[field]}</div>`)
+				}else{
+					$(`input[name=${field}]`).after(`<div id='${field}' class='text-danger'>${fields[field]}</div>`)
+				}
 			}
 		}
 
 		if(data == 'success'){
-			$('form').after(`<h6 class="bg-success text-light p-2 mt-3 rounded">Registrado com sucesso!</h6>`).hide().fadeIn();
+			$('button[type=submit]').after(`<h6 id="success" class="bg-success text-light p-2 mt-3 rounded text-center">Registrado com sucesso!</h6>`).hide().fadeIn();
 			$('input').val('');
 		}
 	}

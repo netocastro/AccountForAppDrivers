@@ -1,7 +1,8 @@
 body {
-  background: url("../../../../cdn/assets/media/image/fundo4.jpg") center center;
+  background: url("../../../../cdn/assets/media/image/fundo1.jpg") center center no-repeat;
   color: black;
   background-size: 100%;
+  background-attachment: fixed;
 }
 
 /*# sourceMappingURL=style.css.map */

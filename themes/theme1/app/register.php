@@ -11,14 +11,14 @@
         <input type="password" placeholder="Digite senha" name="password" class="form-control mb-2">
         <input type="password" placeholder="Repita senha" name="repeat_password" class="form-control mb-2">
         
-        <div class="d-flex justify-content-center ">
+        <div class="d-flex justify-content-center form-check">
             <input type="checkbox" name="apps[]" value="1" class="form-check-input me-1"> Uber
             <input type="checkbox" name="apps[]" value="2" class="form-check-input ms-2 me-1"> 99
             <input type="checkbox" name="apps[]" value="3" class="form-check-input ms-2 me-1"> Cabify
             <input type="checkbox" name="apps[]" value="4" class="form-check-input ms-2 me-1"> 2v
             <input type="checkbox" name="apps[]" value="5" class="form-check-input ms-2 me-1"> Extra
         </div>
-        <div id="apps"></div>
+        
         <br>
         <button type="submit" class="btn btn-info col-12">Enviar</button>
         <div id="success"></div>

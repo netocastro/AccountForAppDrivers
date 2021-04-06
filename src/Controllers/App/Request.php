@@ -60,8 +60,16 @@ class Request
 			$validateFields['email'] = 'Formato de email inválido';
 		}
 
+		if((new User())->find('email = :e',"e={$data['email']}")->fetch()){
+			$validateFields['email'] = 'Email já foi cadastrado';
+		}
+
 		if(!validateCpf($data['cpf'])){
-			$validateFields['cpf'] = 'Formato de cpf inválido';
+			$validateFields['cpf'] = 'Formato de CPF inválido';
+		}
+
+		if((new User())->find('cpf = :c',"c={$data['cpf']}")->fetch()){
+			$validateFields['cpf'] = 'CPF já foi cadastrado';
 		}
 
 		if(!validateName($data['name'])){
@@ -70,6 +78,10 @@ class Request
 
 		if ($data['password'] != $data['repeat_password']) {
 			$validateFields['repeat_password'] = "Senhas não conferem";
+		}
+
+		if(empty($data['apps'])){
+			$validateFields['apps'] = "Escolha no minimo um app";
 		}
 
 		if($validateFields){
@@ -102,6 +114,7 @@ class Request
 			$userApps->save();
 
 			if ($userApps->fail()) {
+				$user->destroy();
 				echo json_encode("App {$app_id}: " . $userApps->fail()->getMessage());
 				return;
 			} else {
