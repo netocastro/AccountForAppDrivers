@@ -22,7 +22,7 @@ function url($uri = null)
 }
 
 /**
- * função de validação de cpf
+ * função de validação de Name
  */
 
 function validateName($name): bool

@@ -26,29 +26,31 @@ $(document).ready(function(){
 		let arrayForm = dadosForm.serializeArray();	
 
 		arrayForm.forEach(element => {
-			
-			$(`input[name=${element.name}]`).removeClass('is-invalid');
-			$('#'+ element.name).remove();
+			if(element.name != "apps[]"){ // dar um jeito de tirar esse carái;
+				$(`input[name=${element.name}]`).removeClass('is-invalid');
+				$('#'+ element.name).fadeOut().remove();
+			}
 		});
 
 		if(data.emptyFields){
-			
 			data.emptyFields.forEach(element => {	
 				$(`input[name=${element}]`).addClass('is-invalid');
-				$(`input[name=${element}]`).after(`<div id='${element}' class='text-danger'>Campo vazio</div>`)
+				$(`input[name=${element}]`).after(`<div id='${element}' class='text-danger'>Campo vazio</div>`);
+				$(`#${element}`).hide().fadeIn();
 			});
 		}
-
-		if(data.validateFields){	
-			console.log(data.validateFields);
-			data.validateFields.forEach(element => {
-				//console.log(element);
-				//$(`input[name=${element}]`).addClass('is-invalid');
-				//$(`input[name=${element}]`).after(`<div id='${element}' class='text-danger'>Campo vazio</div>`)
-			});
+		if(data.validateFields){
+			let fields = data.validateFields;
+			for (const field in fields) {
+				console.log(fields[field]);
+				$(`input[name=${field}]`).addClass('is-invalid');
+				$(`input[name=${field}]`).after(`<div id='${field}' class='text-danger'>${fields[field]}</div>`)
+			}
 		}
-		//validateFields
 
-
+		if(data == 'success'){
+			$('form').after(`<h6 class="bg-success text-light p-2 mt-3 rounded">Registrado com sucesso!</h6>`).hide().fadeIn();
+			$('input').val('');
+		}
 	}
-});
+});		

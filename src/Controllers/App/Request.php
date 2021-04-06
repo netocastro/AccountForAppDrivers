@@ -7,11 +7,9 @@ use Source\Models\UserApps;
 
 class Request
 {
-
 	private $router;
 
 	public function __construct($router){
-		
 		$this->router = $router;
 	}
 
@@ -57,26 +55,27 @@ class Request
 		}
 
 		$validateFields = [];
-		$validateFields['invalidEmail'] = validateEmail($data['email']);
-		$validateFields['invalidCpf'] = validateCpf($data['cpf']);
-		$validateFields['invalidName'] = validateName($data['name']);
 
-		foreach ($validateFields as $field) {
-			if (!$field) {
-				echo json_encode(['validateFields' => $validateFields]);
-				return;
-			}
+		if(!validateEmail($data['email'])){
+			$validateFields['email'] = 'Formato de email inválido';
+		}
+
+		if(!validateCpf($data['cpf'])){
+			$validateFields['cpf'] = 'Formato de cpf inválido';
+		}
+
+		if(!validateName($data['name'])){
+			$validateFields['name'] = 'Formato do nome inválido';
 		}
 
 		if ($data['password'] != $data['repeat_password']) {
-			echo json_encode('senhas nao conferem');
-			return;
+			$validateFields['repeat_password'] = "Senhas não conferem";
 		}
 
-		$filterFilds = filter_var_array($data, [
-			"email" => FILTER_SANITIZE_EMAIL,
-			"email" => FILTER_VALIDATE_EMAIL,
-		]);
+		if($validateFields){
+			echo json_encode(['validateFields' => $validateFields]);
+			return;
+		}
 
 		$user = new User();
 
@@ -109,6 +108,6 @@ class Request
 				$save[] = "App{$app_id}_save";
 			}			
 		}
-		echo json_encode($save);
+		echo json_encode('success');
 	}
 }

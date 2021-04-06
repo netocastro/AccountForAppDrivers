@@ -1,14 +1,14 @@
 $(document).ready(function(){
 
-	$('#form-login').on('submit',function(event) {
+	$('form').on('submit',function(event) {
 		event.preventDefault();
 		let dadosForm = $('#form-login');
 
 		$.ajax({
-			url: $('#form-login').attr('action'),
-			type: $('#form-login').attr('method'),
+			url: $('form').attr('action'),
+			type: $('form').attr('method'),
 			dataType: 'JSON',
-			data: $('#form-login').serialize(),
+			data: $('#form').serialize(),
 			success: function(data) {
 				console.log(data);
 				validateFields(data,dadosForm);

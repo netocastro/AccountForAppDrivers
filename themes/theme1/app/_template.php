@@ -8,7 +8,7 @@
 
   <!-- Bootstrap CSS -->
   <link href="<?= url('cdn/libs/bootstrap/bootstrap-5.0.0-beta1-dist/css/bootstrap.min.css'); ?>" rel="stylesheet">
-  <link href="<?= url('themes/theme1/css/style.css') ?>" rel="stylesheet">
+  <link href="<?= url('themes/theme1/app/css/style.css') ?>" rel="stylesheet">
 
   <title><?= $title ?></title>
 </head>
