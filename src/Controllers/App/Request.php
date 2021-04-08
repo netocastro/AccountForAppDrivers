@@ -15,6 +15,8 @@ class Request
 
 	public function login($data){
 
+		//echo json_encode($data);exit;	
+
 		$validateEmptyFields = array_keys($data, '');
 
 		if ($validateEmptyFields) {
@@ -65,8 +67,8 @@ class Request
 		}
 
 		if(!validateCpf($data['cpf'])){
-			$validateFields['cpf'] = 'Formato de CPF inválido';
-		}
+			$validateFields['cpf'] = 'Formato de CPF inválido<br>ex: 000.000.000-00';
+		}	
 
 		if((new User())->find('cpf = :c',"c={$data['cpf']}")->fetch()){
 			$validateFields['cpf'] = 'CPF já foi cadastrado';
@@ -81,7 +83,7 @@ class Request
 		}
 
 		if(empty($data['apps'])){
-			$validateFields['apps'] = "Escolha no minimo um app";
+			$validateFields['apps'] = "Escolha no mínimo um app";
 		}
 
 		if($validateFields){

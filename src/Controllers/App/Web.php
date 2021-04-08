@@ -1,4 +1,4 @@
-<?php
+<?php	
 
 namespace Source\Controllers\App;
 
@@ -26,7 +26,7 @@ class Web{
 			"dates" => (new Date())->find()->fetch(true),
 			"apps_accounts" => (new AppsAccount())->find()->fetch(true),
 			"historic" => (new historic())->find()->fetch(true),*/
-		]);
+		]);																																																																																						
 	}
 
 	public function register(){

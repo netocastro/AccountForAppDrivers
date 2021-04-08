@@ -54,20 +54,12 @@ if ($session) : ?>
     </div>
 
     <div class="container">
-
-        <?php foreach ($userDates as $userDate) : //  print_r($userDate->mes());   
-        ?>
-
-
-        <?php endforeach; ?>
-
         <div class="row">
             <div class="col-md-12">
                 <div class="bg-success text-light p-2 mb-3 text-center rounded">
                     <h4>Janeiro</h4>
                 </div>
                 <table class="table">
-
                     <thead>
                         <tr>
                             <th scope="col">Data</th>

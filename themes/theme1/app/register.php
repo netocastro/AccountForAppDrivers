@@ -1,10 +1,10 @@
 <?php $v->layout('_template') ?>
 
-<h1 class="text-light text-center">Register</h1>
+<h1 class="text-center">Register</h1>
 
 <div style="display: flex; align-items: center; justify-content: center;">
 
-    <form method="POST" action="<?= $router->route('app.request.register') ?>" id="form-register" class="text-light">
+    <form method="POST" action="<?= $router->route('app.request.register') ?>" id="form-register" >
         <input type="email" placeholder="Digite email" name="email" class="form-control mb-2">
         <input type="text" placeholder="Digite cpf" name="cpf" maxlength="14" class="form-control mb-2">
         <input type="text" placeholder="Digite Nome" name="name" class="form-control mb-2">

@@ -8,10 +8,10 @@ $(document).ready(function(){
 			url: $('form').attr('action'),
 			type: $('form').attr('method'),
 			dataType: 'JSON',
-			data: $('#form').serialize(),
+			data: $('form').serialize(),
 			success: function(data) {
 				console.log(data);
-				validateFields(data,dadosForm);
+				validateFieldsLogin(data, dadosForm);
 				if(data == 'redirect'){
 					window.location.href = rota;
 				}
@@ -23,7 +23,7 @@ $(document).ready(function(){
 		});
 	});
 
-	function validateFields(data, dadosForm) {
+	function validateFieldsLogin(data, dadosForm) {
 
 		let arrayForm = dadosForm.serializeArray();	
 

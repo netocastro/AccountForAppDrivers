@@ -30,7 +30,7 @@ class Web{
 		]);
 	}
 
-	public function viewBalance(){
+	public function informations(){
 
 		$user = (new User())->findById($_SESSION['user_id']);
 		$userApps = (new UserApps())->find("user_id = :user_id","user_id={$_SESSION['user_id']}")->fetch(true);
