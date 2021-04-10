@@ -25,18 +25,6 @@ class Request
             return;
         }
 
-        /*	$validateFields = [];
-            $validateFields['invalidMoney'] = validateMoney($data['money']);
-            $validateFields['invalidExpenses'] = validateMoney($data['expenses']);
-            $validateFields['invalidTotal'] = validateMoney($data['total']);*/
-
-        /*	foreach ($validateFields as $field) {
-                if(!$field){
-                    echo json_encode($validateFields);
-                    return;
-                }
-            }*/
-
         $date = (new Date())->find('date = :date', 'date=' . $data['date'])->fetch();
 
         if (!$date) {
@@ -57,8 +45,10 @@ class Request
 
         if(!$userDate){
             $userDate = new UserDates();
+
             $userDate->user_id = $session;
             $userDate->date_id = $date->id;
+
             $userDate->save();
 
             if ($userDate->fail()) {
@@ -76,7 +66,7 @@ class Request
             
             $appsAccount = new AppsAccount();   
 
-            echo json_encode($appsAccount->moneyDayApp($data[$app->appName()], $data['date'], $app->app_id));   
+            //echo json_encode($appsAccount->moneyDayApp($data[$app->appName()], $data['date'], $app->app_id));   
 
             $appsAccount->user_date_id = $userDate->id;
             $appsAccount->user_app_id = $app->id;
@@ -116,6 +106,6 @@ class Request
         } else {
             $saves['historic'] = 'save_historic';
         }
-        echo json_encode(['saves' => $saves]);
+        echo json_encode('success');
     }
 }

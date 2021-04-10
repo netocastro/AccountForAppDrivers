@@ -26,7 +26,7 @@ if ($session) : ?>
 
     <?php $v->start('js'); ?>
 
-    <script src="<?= url('themes/theme1/js/registerDay.js'); ?>"></script>
+    <script src="<?= url('themes/theme1/admin/js/registerDay.js'); ?>"></script>
 
     <?php $v->end(); ?>
 

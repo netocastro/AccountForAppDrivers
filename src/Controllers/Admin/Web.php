@@ -35,33 +35,15 @@ class Web{
 		$user = (new User())->findById($_SESSION['user_id']);
 		$userApps = (new UserApps())->find("user_id = :user_id","user_id={$_SESSION['user_id']}")->fetch(true);
 		$userDates = (new UserDates())->find("user_id = :user_id","user_id={$_SESSION['user_id']}")->fetch(true);
+		$appsAccount = (new AppsAccount())->find("id = :id", "")->fetch(true);
 
-		/** @var User $user  */
-		/*$userDates = $user->userDates();
-
-		foreach ($userDates as $userDate) {
-
-			$historic = $userDate->historic();
-
-			$appAccounts = $userDate->appsAccounts();
-			
-			foreach ($appAccounts as $appAccount ) {
-				echo "{$appAccount->userAppName()} " . $appAccount->money . "<br>";
-			}
-
-			echo "Data: " . $userDate->date . "<br>";
-			echo "Money: " . $historic->money . "<br>";
-			echo "expenses: " . $historic->expenses . "<br>";
-			echo "balance: " . $historic->balance . "<br>";
-			echo "<hr>";			
-		}
-
-		exit;*/
-
-		echo $this->view->render('viewBalance',[	
-			"user" => $user,
+		echo $this->view->render('informations',[	
+			"title" => "Admin | Informations",
+			"user" => $user,	
 			"userApps" => $userApps,
-			"userDates" => $userDates
+			"userDates" => $userDates,
+			"appsAccount" => $appsAccount,
+			"teste" => 'teste'
 		]);
 	}
 }

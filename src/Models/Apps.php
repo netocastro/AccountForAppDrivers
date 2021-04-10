@@ -10,7 +10,7 @@ class Apps extends DataLayer {
         parent::__construct('apps',['name'],'id');
     }
 
-    public function userApps(){
+   /* public function userApps(){
 		return (new Apps())->find('user_id = :user_id','user_id='. $this->id)->fetch(true);
-	}
+	}*/
 }

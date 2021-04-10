@@ -11,20 +11,17 @@ class AppsAccount extends DataLayer{
 		parent::__construct('Apps_accounts', ['user_date_id', 'user_app_id', 'money'], 'id');
     }
     
-    public function userDateId(){
-        return (new UserDates())->find('id = :id',"id={$this->user_date_id}")->fetch()->date_id;
+   /* public function userDateId(){
+        return (new UserDates())->find('id = :id',"id={$this->user_date_id}")->fetch();
     }
 
 	public function date(){
-        return (new Date())->find('id = :id',"id={$this->userDateId()}")->fetch()->date;
+        return (new Date())->find('id = :id',"id={$this->userDateId()}")->fetch();
     }
     
     public function userAppName(){
         return (new UserApps())->find('id = :id',"id={$this->user_app_id}")->fetch()->appName();
     }
-
-
-
 
     public function moneyDayApp($correntAccount, $currentDate, $app_id) {
 
@@ -44,5 +41,5 @@ class AppsAccount extends DataLayer{
             }
         }
         return $correntAccount;
-    }
+    }*/
 }

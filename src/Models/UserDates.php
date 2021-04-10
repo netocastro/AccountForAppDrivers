@@ -11,7 +11,7 @@ class UserDates extends DataLayer{
 		parent::__construct('user_dates',['user_id','date_id'], 'id' ,false);
 	}
 
-	public function date(){
+/*	public function date(){
 		return (new Date())->find('id = :id','id='. $this->date_id)->fetch()->date;
 	}
 
@@ -26,7 +26,7 @@ class UserDates extends DataLayer{
 
 	public function appsAccounts(){
 		return (new appsAccount())->find('user_date_id = :user_date_id', 'user_date_id='. $this->id)->fetch(true);
-	}
+	}*/
 
 
 }

@@ -36,23 +36,24 @@ $(document).ready(function(){
 			
 			data.findEmptyFields.forEach(element => {	
 				$(`input[name=${element}]`).addClass('is-invalid');
-				$(`input[name=${element}]`).after(`<div id='${element}' class='text-danger'>Campo vazio</div>`);
+				$(`input[name=${element}]`).after(`<div id='${element}' class='text-danger text-center'>Campo vazio</div>`);
+				$(`#${element}`).hide().fadeIn();
 			});
 		}
 
 		if(data == `Date: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '${arrayForm[0].value}-1' for key 'PRIMARY'`){
 
-			$(`input[name=date`).addClass('is-invalid');
-			$(`input[name=date`).after(`<div id='date' class='text-danger'>Data já registrada</div>`);
+			$(`input[name=date]`).addClass('is-invalid');
+			$(`input[name=date]`).after(`<div id='date' class='text-danger'>Data já registrada</div>`);
 		}
 
 		if(data == `UserDate have register for this day`){
 
-			$(`input[name=date`).addClass('is-invalid');
-			$(`input[name=date`).after(`<div id='date' class='text-danger'>Data já registrada</div>`);
+			$(`input[name=date]`).addClass('is-invalid');
+			$(`input[name=date]`).after(`<div id='date' class='text-danger'>Data já registrada</div>`);
 		}
 
-		if(data.saves){
+		if(data == 'success'){
 			$(`.btn-primary`).after(`<div id='button' class='bg-success text-center rounded p-2 mt-3 mb-5'>Salvo!</div>`).fadeIn();
 			$(`input`).val('');
 		}

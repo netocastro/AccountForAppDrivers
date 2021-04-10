@@ -29,9 +29,23 @@ if ($session) : ?>
 
     <?php $v->layout('_template'); ?>
 
-   
+    <?php
 
-    <div class="row">
+        foreach ($appsAccount as $account) {
+            echo "<pre>";
+            var_dump($account);
+            echo "</pre>";
+
+        }
+
+    var_dump($teste);
+
+
+    ?>
+
+
+
+    <!--  <div class="row">
         <div clasS="col-4">
 
             <h1 class="text-center">Users</h1>
@@ -51,7 +65,7 @@ if ($session) : ?>
             <?php var_dump($userDates) ?>
             </pre>
         </div>
-    </div>
+    </div> -->
 
     <div class="container">
         <div class="row">

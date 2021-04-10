@@ -11,11 +11,11 @@ class User extends DataLayer{
 		parent::__construct('users',['cpf','email','name','password'],'id',false);
 	}
 
-	public function userApps(){
+	/*public function userApps(){
 		return (new UserApps())->find('user_id = :user_id','user_id='. $this->id)->fetch(true);
 	}
 
 	public function userDates(){
 		return (new UserDates())->find('user_id = :user_id','user_id='. $this->id)->fetch(true);
-	}
+	}*/
 }
