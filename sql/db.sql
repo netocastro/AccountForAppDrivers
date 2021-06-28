@@ -16,7 +16,7 @@
         PRIMARY KEY(id)
     );  
 
-    insert into `users`(cpf, email, name, password) VALUES('000.000.000-01','a@a.com','Joao Silva','QL0AFWMIX8NRZTKeof9cXsvbvu8=');
+    insert into `users`(cpf, email, name, password) VALUES('000.000.000-01','admin@admin.com','Admin','$2y$10$VcJ3jxidUIENrTywpUpe..1m37YJZiAbif7uarDLF5HlsmCrAmLZ6');
 
     CREATE TABLE `dates`(
         `id` INTEGER UNIQUE NOT NULL AUTO_INCREMENT,

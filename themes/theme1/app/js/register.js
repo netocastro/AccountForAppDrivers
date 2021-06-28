@@ -12,7 +12,7 @@ $(document).ready(function(){
 			data: $('#form-register').serialize(),
 			success: function(data) {
 				console.log(data);
-				validateFields(data,dadosForm);
+				validateFieldsRegister(data,dadosForm);
 			},
 			error: function(error) {
 				console.log(error);
@@ -21,12 +21,12 @@ $(document).ready(function(){
 		});
 	});
 	
-	function validateFields(data, dadosForm) {
+	function validateFieldsRegister(data, dadosForm) {
 
 		let arrayForm = dadosForm.serializeArray();	
 
 		arrayForm.forEach(element => {
-			if(element.name != "apps[]"){ // dar um jeito de tirar esse carái;
+			if(element.name != "apps[]"){ // dar um jeito de tirar essa condição;
 				$(`input[name=${element.name}]`).removeClass('is-invalid');
 				$('#'+ element.name).fadeOut().remove();
 				$('#apps').fadeOut().remove();

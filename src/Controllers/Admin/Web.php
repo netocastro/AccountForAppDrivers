@@ -21,12 +21,11 @@ class Web{
 
 	public function home(){
 
-		$userApps = (isset($_SESSION['user_id'])) ? (new User())->find('id = :id','id='.$_SESSION['user_id'])->fetch()->userApps() : false;
+		$userApps = (isset($_SESSION['user_id'])) ? (new UserApps())->find('user_id = :user_id','user_id='.$_SESSION['user_id'])->fetch(true) : false;
 
 		echo $this->view->render('home',[	
 			"title" => "Admin | Home",
-			"user_apps" => $userApps,
-			"apps" => new Apps()
+			"userApps" => $userApps
 		]);
 	}
 
@@ -35,14 +34,13 @@ class Web{
 		$user = (new User())->findById($_SESSION['user_id']);
 		$userApps = (new UserApps())->find("user_id = :user_id","user_id={$_SESSION['user_id']}")->fetch(true);
 		$userDates = (new UserDates())->find("user_id = :user_id","user_id={$_SESSION['user_id']}")->fetch(true);
-		$appsAccount = (new AppsAccount())->find("id = :id", "")->fetch(true);
+
 
 		echo $this->view->render('informations',[	
 			"title" => "Admin | Informations",
 			"user" => $user,	
 			"userApps" => $userApps,
 			"userDates" => $userDates,
-			"appsAccount" => $appsAccount,
 			"teste" => 'teste'
 		]);
 	}

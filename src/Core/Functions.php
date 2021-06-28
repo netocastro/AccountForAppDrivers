@@ -277,7 +277,7 @@ function objectsExistEcho($model, array $data, array $filter)
     print_r($response);
 }
 
-function valueReceiveAccountToday($model, $contaAtual, $id_app, $date_register)
+/*function valueReceiveAccountToday($model, $contaAtual, $id_app, $date_register)
 {
 
     $appsAccounts = $model->find("id_app = :id_app", "id_app={$id_app}")->limit(6)->fetch(true);
@@ -295,7 +295,7 @@ function valueReceiveAccountToday($model, $contaAtual, $id_app, $date_register)
         }
     }
     return $contaAtual;
-}
+}*/
 
 
 function balance()

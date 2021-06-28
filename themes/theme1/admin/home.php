@@ -12,14 +12,15 @@ if ($session) : ?>
         <form method="POST" action="<?= $router->route('admin.request.registerDay') ?>" id="form-registerDay">
             Data:<input type="date" name="date" class="form-control">
 
-            <?php foreach ($user_apps as $user_app) : ?>
-                <?= $user_app->appName ?>:<input type="number" name="<?= $user_app->appName ?>" step="0.01" class="form-control">
+            <?php foreach ($userApps as $userApp) : ?>
+                <?= $userApp->appName() ?>:<input type="number" name="<?= $userApp->appName(); ?>" step="0.01" class="form-control">
             <?php endforeach; ?>
 
             Dinheiro: <input type="number" name="money" step="0.01" class="form-control">
             Gastos: <input type="number" name="expenses" step="0.01" class="form-control">
             Total: <input type="number" name="total" step="0.01" class="form-control">
             <button type="submit" class="btn btn-primary btn-block mt-3">Salvar</button>
+
         </form>
 
     </div>

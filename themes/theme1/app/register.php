@@ -12,6 +12,8 @@
         <input type="password" placeholder="Repita senha" name="repeat_password" class="form-control mb-2">
         
         <div class="d-flex justify-content-center form-check">
+
+            <input type="hidden" name="apps[]" value="">
             <input type="checkbox" name="apps[]" value="1" class="form-check-input me-1"> Uber
             <input type="checkbox" name="apps[]" value="2" class="form-check-input ms-2 me-1"> 99
             <input type="checkbox" name="apps[]" value="3" class="form-check-input ms-2 me-1"> Cabify
