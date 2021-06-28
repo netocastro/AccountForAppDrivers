@@ -57,7 +57,7 @@ if ($session) : ?>
                                 echo "<td> " . $historic->money . "</td> ";
                                 echo "<td> " . $historic->expenses . "</td> ";
                                 echo "<td> " . $total . "</td> ";
-                                echo "<td> " . $historic->balance . "</td> ";
+                                echo "<td> " . ($historic->balance * -1.00) . "</td> ";
                                 echo "<tr>";
 
                             endforeach;

@@ -104,6 +104,6 @@ class Request
             echo json_encode('Historic: ' . $historic->fail()->getMessage());
             return;
         }
-        echo json_encode($totalAccounts);
+        echo json_encode(['success' => 'Registrado com sucesso']);
     }
 }

@@ -11,7 +11,6 @@ $(document).ready(function(){
 			dataType: 'JSON',
 			data: $('#form-registerDay').serialize(),
 			success: function(data) {
-				console.log(data);
 				validateFields(data, dadosForm); 
 			},
 			error: function(error) {

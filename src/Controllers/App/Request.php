@@ -117,8 +117,6 @@ class Request
 		if ($user->fail()) {
 			echo json_encode("User: " . $user->fail()->getMessage());
 			return;
-		} else {
-			$save[] = "user_save";
 		}
 
 		foreach ($data['apps'] as $app_id) {
@@ -134,8 +132,6 @@ class Request
 					$user->destroy();
 					echo json_encode("App {$app_id}: " . $userApps->fail()->getMessage());
 					return;
-				} else {
-					$save[] = "App{$app_id}_save";
 				}
 			}
 		}
