@@ -33,7 +33,7 @@ if ($session) : ?>
                         <?php
                         if ($userDates) :
                             foreach ($userDates as $userDate) :
-    
+
                                 $total = 0;
 
                                 $historic = $userDate->historic();
@@ -54,10 +54,10 @@ if ($session) : ?>
 
                                 $total += ($historic->money + $historic->expenses + $historic->balance);
 
-                                echo "<td> " . $historic->money . "</td> ";
-                                echo "<td> " . $historic->expenses . "</td> ";
-                                echo "<td> " . $total . "</td> ";
-                                echo "<td> " . ($historic->balance * -1.00) . "</td> ";
+                                echo "<td> " . number_format($historic->money, 2, ',', '.') . "</td> ";
+                                echo "<td> " . number_format($historic->expenses, 2, ',', '.') . "</td> ";
+                                echo "<td> " . number_format($total, 2, ',', '.') . "</td> ";
+                                echo "<td> " . number_format(($historic->balance == 0 ? 0 : $historic->balance * -1.00), 2, ',', '.')  . "</td> ";
                                 echo "<tr>";
 
                             endforeach;

@@ -13,14 +13,16 @@ if ($session) : ?>
             Data:<input type="date" name="date" class="form-control">
 
             <?php foreach ($userApps as $userApp) : ?>
-                <?= $userApp->appName() ?>:<input type="number" name="<?= $userApp->appName(); ?>" step="0.01" class="form-control">
+                Conta <?= $userApp->appName() ?>:<input type="number" name="<?= $userApp->appName(); ?>" step="0.01" class="form-control">
             <?php endforeach; ?>
 
             Dinheiro: <input type="number" name="money" step="0.01" class="form-control">
             Gastos: <input type="number" name="expenses" step="0.01" class="form-control">
             Total: <input type="number" name="total" step="0.01" class="form-control">
-            <button type="submit" class="btn btn-primary btn-block mt-3">Salvar</button>
-
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-block mt-3">Salvar</button>
+            </div>
+            <div class="load text-center"></div>
         </form>
 
     </div>
@@ -36,7 +38,3 @@ if ($session) : ?>
     $router->redirect('app.web.home');
 
 endif ?>
-
-
-
-<?php

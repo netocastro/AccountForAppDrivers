@@ -42,8 +42,8 @@
         PRIMARY KEY(id)
     ); 
 
-    ALTER TABLE user_dates ADD FOREIGN KEY (user_id) REFERENCES Users(id) ON UPDATE CASCADE on DELETE CASCADE;
-    ALTER TABLE user_dates ADD FOREIGN KEY (date_id) REFERENCES Dates(id) ON UPDATE CASCADE on DELETE CASCADE;
+    ALTER TABLE user_dates ADD FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE on DELETE CASCADE;
+    ALTER TABLE user_dates ADD FOREIGN KEY (date_id) REFERENCES dates(id) ON UPDATE CASCADE on DELETE CASCADE;
 
     CREATE TABLE `user_apps`(
         `id` INTEGER UNIQUE NOT NULL AUTO_INCREMENT,
@@ -53,8 +53,8 @@
         PRIMARY KEY(id)
     ); 
 
-    ALTER TABLE user_apps ADD FOREIGN KEY (user_id) REFERENCES Users(id) ON UPDATE CASCADE on DELETE CASCADE;
-    ALTER TABLE user_apps ADD FOREIGN KEY (app_id) REFERENCES Apps(id) ON UPDATE CASCADE on DELETE CASCADE;
+    ALTER TABLE user_apps ADD FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE on DELETE CASCADE;
+    ALTER TABLE user_apps ADD FOREIGN KEY (app_id) REFERENCES apps(id) ON UPDATE CASCADE on DELETE CASCADE;
 
     insert into user_apps(user_id, app_id) VALUES ('1','1'), ('1','2');
 
@@ -68,7 +68,7 @@
     );
 
     ALTER TABLE apps_accounts ADD FOREIGN KEY (user_date_id) REFERENCES user_dates(id) ON UPDATE CASCADE on DELETE CASCADE;
-    ALTER TABLE apps_accounts ADD FOREIGN KEY (user_app_id) REFERENCES User_apps(id) ON UPDATE CASCADE on DELETE CASCADE;
+    ALTER TABLE apps_accounts ADD FOREIGN KEY (user_app_id) REFERENCES user_apps(id) ON UPDATE CASCADE on DELETE CASCADE;
 
     CREATE TABLE `historic`(
         `id` INTEGER UNIQUE NOT NULL AUTO_INCREMENT,
@@ -81,3 +81,4 @@
     );
 
     ALTER TABLE historic ADD FOREIGN KEY (user_date_id) REFERENCES user_dates(id) ON UPDATE CASCADE on DELETE CASCADE;
+

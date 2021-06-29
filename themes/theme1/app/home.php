@@ -8,7 +8,10 @@
 				<h1 class="text-center">Login</h1>
 				<input type="email" placeholder="Email" class="form-control my-2" name="email">
 				<input type="password" placeholder="Senha" class="form-control my-2" name="password">
-				<button type="submit" class="btn btn-primary col-12 my-2">Login</button>
+				<div class="d-grid gap-2">
+					<button type="submit" class="btn btn-primary my-2">Login</button>
+				</div>
+				<div class="load text-center"></div>
 			</form>
 		</div>
 		<div class="col-md-4"></div>

@@ -10,7 +10,7 @@ class AppsAccount extends DataLayer
 
     function __construct()
     {
-        parent::__construct('Apps_accounts', ['user_date_id', 'user_app_id', 'money'], 'id');
+        parent::__construct('apps_accounts', ['user_date_id', 'user_app_id', 'money'], 'id');
     }
 
     public function dateId()

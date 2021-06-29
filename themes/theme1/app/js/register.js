@@ -3,6 +3,8 @@ $(document).ready(function(){
 	$('#form-register').on('submit',function(event) {
 		event.preventDefault();
 
+		_this = $(this);
+
 		let dadosForm = $('#form-register');
 
 		$.ajax({
@@ -10,6 +12,9 @@ $(document).ready(function(){
 			type: $('#form-register').attr('method'),
 			dataType: 'JSON',
 			data: $('#form-register').serialize(),
+			beforeSend: function() {
+                        _this.find('.load').html(`<img src="cdn/assets/media/gifs/load.gif" width="80">`);
+                  },
 			success: function(data) {
 				console.log(data);
 				validateFieldsRegister(data,dadosForm);
@@ -18,7 +23,9 @@ $(document).ready(function(){
 				console.log(error);
 				console.log(error.responseText);
 			}
-		});
+		}).always( function() {
+                  _this.find('.load').html("");
+            });
 	});
 	
 	function validateFieldsRegister(data, dadosForm) {
