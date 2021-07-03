@@ -10,12 +10,10 @@ use Source\Models\UserDates;
 
 class Request
 {
-
     public function registerDay($data)
     {
         $session = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
-       
-        $saves = [];
+
         $totalAccounts = 0;
 
         $findEmptyFields = array_keys($data, '');
@@ -56,7 +54,7 @@ class Request
                 return;
             }
         } else {
-            $validateFields['date'] = 'user have register for this day';
+            $validateFields['date'] = 'Usuário já cadastrou essa data';
         }
 
         if ($validateFields) {
@@ -64,13 +62,13 @@ class Request
             return;
         }
 
-        foreach ((new UserApps())->find('user_id = :user_id', "user_id={$session}")->fetch(true) as $app) {
+        foreach ((new UserApps())->find('user_id = :user_id', "user_id={$session}")->fetch(true) as $UserApp) {
 
             $appsAccount = new AppsAccount();
 
             $appsAccount->user_date_id = $userDate->id;
-            $appsAccount->user_app_id = $app->id;
-            $appsAccount->money = $appsAccount->newAppAccount($data[$app->appName()], $data['date'], $app->app_id);
+            $appsAccount->user_app_id = $UserApp->id;
+            $appsAccount->money = $appsAccount->newAppAccount($data[$UserApp->appName()], $data['date'], $UserApp->id);
 
             $appsAccount->save();
 
@@ -82,8 +80,6 @@ class Request
 
                 echo json_encode('appsAccount: ' . $appsAccount->fail()->getMessage());
                 return;
-            } else {
-                $saves['appsAccount'] = 'save_appsAccount';
             }
         }
 

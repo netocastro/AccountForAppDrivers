@@ -1,75 +1,64 @@
-<?php
+<?php $v->layout('_template'); ?>
 
-$session = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="bg-success text-light p-2 mb-3 text-center rounded">
+                <h4>Janeiro</h4>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Data</th>
 
-if ($session) : ?>
+                        <?php foreach ($userApps as $userApp) : ?>
+                            <?= "<th scope='col'>{$userApp->appName()}</th>" ?>
+                        <?php endforeach; ?>
 
-    <?php $v->layout('_template'); ?>
+                        <th scope="col">dinheiro</th>
+                        <th scope="col">Gastos</th>
+                        <th scope="col">total</th>
+                        <th scope="col">Saldo</th>
+                    </tr>
+                </thead>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="bg-success text-light p-2 mb-3 text-center rounded">
-                    <h4>Janeiro</h4>
-                </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Data</th>
+                <tbody>
 
-                            <?php foreach ($userApps as $userApp) : ?>
-                                <?= "<th scope='col'>{$userApp->appName()}</th>" ?>
-                            <?php endforeach; ?>
+                    <?php
+                    if ($userDates) :
+                        foreach ($userDates as $userDate) :
 
-                            <th scope="col">dinheiro</th>
-                            <th scope="col">Gastos</th>
-                            <th scope="col">total</th>
-                            <th scope="col">Saldo</th>
-                        </tr>
-                    </thead>
+                            $total = 0;
 
-                    <tbody>
+                            $historic = $userDate->historic();
 
-                        <?php
-                        if ($userDates) :
-                            foreach ($userDates as $userDate) :
+                            $date = new DateTime($userDate->date);
 
-                                $total = 0;
+                            $appAccounts = $userDate->appsAccounts();
 
-                                $historic = $userDate->historic();
+                            echo "<tr>";
+                            echo "<td> " . $date->format('d-m-Y') . "</td> ";
 
-                                $date = new DateTime($userDate->date);
+                            foreach ($appAccounts as $appAccount) :
 
-                                $appAccounts = $userDate->appsAccounts();
-
-                                echo "<tr>";
-                                echo "<td> " . $date->format('d-m-Y') . "</td> ";
-
-                                foreach ($appAccounts as $appAccount) :
-
-                                    echo "<td> " . $appAccount->money . "</td> ";
-                                    $total += $appAccount->money;
-
-                                endforeach;
-
-                                $total += ($historic->money + $historic->expenses + $historic->balance);
-
-                                echo "<td> " . number_format($historic->money, 2, ',', '.') . "</td> ";
-                                echo "<td> " . number_format($historic->expenses, 2, ',', '.') . "</td> ";
-                                echo "<td> " . number_format($total, 2, ',', '.') . "</td> ";
-                                echo "<td> " . number_format(($historic->balance == 0 ? 0 : $historic->balance * -1.00), 2, ',', '.')  . "</td> ";
-                                echo "<tr>";
+                                echo "<td>R$ " .  number_format($appAccount->money, 2, ',', '.') . "</td> ";
+                                $total += $appAccount->money;
 
                             endforeach;
-                        endif; ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
 
+                            $total += ($historic->money + $historic->expenses + $historic->balance);
+
+                            echo "<td>R$ " . number_format($historic->money, 2, ',', '.') . "</td> ";
+                            echo "<td>R$ " . number_format($historic->expenses, 2, ',', '.') . "</td> ";
+                            echo "<td>R$ " . number_format($total, 2, ',', '.') . "</td> ";
+                            echo "<td>R$ " . number_format(($historic->balance == 0 ? 0 : $historic->balance * -1.00), 2, ',', '.')  . "</td> ";
+                            echo "<tr>";
+
+                        endforeach;
+                    endif; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 
-<?php else :
-    $router->redirect('app.web.home');
-
-endif ?>
+</div>

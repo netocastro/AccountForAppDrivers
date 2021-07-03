@@ -3,14 +3,17 @@
 namespace Source\Controllers\App;
 
 use League\Plates\Engine;
-use Source\Models\User;
-use Source\Models\Date;
-use Source\Models\AppsAccount;
-use Source\Models\Historic;
 
 class Web{
-
+	
+	/**
+	 * @var Engine
+	 */
 	private $view;
+
+	/**
+	 * @var Router
+	 */
 	private $router;
 
 	function __construct($router){
@@ -21,11 +24,7 @@ class Web{
 
 	public function home(){
 		echo $this->view->render('home',[	
-			"title" => "App Gerence | Principal"/*,
-			"users" => (new User())->find()->fetch(true),
-			"dates" => (new Date())->find()->fetch(true),
-			"apps_accounts" => (new AppsAccount())->find()->fetch(true),
-			"historic" => (new historic())->find()->fetch(true),*/
+			"title" => "App Gerence | Principal"
 		]);																																																																																						
 	}
 
@@ -33,14 +32,11 @@ class Web{
 		echo $this->view->render('register',[	
 			"title" => "App Gerence | Registro",
 		]);
-
 	}
 
 	public function logout(){
 		unset($_SESSION['user_id']);
 
 		$this->router->redirect('app.web.home');
-
-
 	}
 }

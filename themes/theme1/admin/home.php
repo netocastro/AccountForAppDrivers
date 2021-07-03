@@ -1,9 +1,4 @@
-<?php
-
-$session = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : '';
-
-if ($session) : ?>
-    <?php $v->layout('_template'); ?>
+<?php $v->layout('_template'); ?>
 
     <h1 class="text-center">Cadastrar dia</h1>
 
@@ -32,9 +27,3 @@ if ($session) : ?>
     <script src="<?= url('themes/theme1/admin/js/registerDay.js'); ?>"></script>
 
     <?php $v->end(); ?>
-
-
-<?php else :
-    $router->redirect('app.web.home');
-
-endif ?>

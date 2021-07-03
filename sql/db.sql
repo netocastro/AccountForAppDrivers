@@ -17,6 +17,7 @@
     );  
 
     insert into `users`(cpf, email, name, password) VALUES('000.000.000-01','admin@admin.com','Admin','$2y$10$VcJ3jxidUIENrTywpUpe..1m37YJZiAbif7uarDLF5HlsmCrAmLZ6');
+    insert into `users`(cpf, email, name, password) VALUES('072.726.284.05','netocastrotec@gmail.com','Neto Castro','$2y$10$VcJ3jxidUIENrTywpUpe..1m37YJZiAbif7uarDLF5HlsmCrAmLZ6');
 
     CREATE TABLE `dates`(
         `id` INTEGER UNIQUE NOT NULL AUTO_INCREMENT,
@@ -32,7 +33,7 @@
         PRIMARY KEY(id)
     ); 
 
-    insert into apps(name) VALUES ('Uber'), ('99'),('cabify'),('2v'),('Extra');
+    insert into apps(name) VALUES ('Uber'), ('99'),('cabify'),('maxim'),('2v');
 
     CREATE TABLE `user_dates`(
         `id` INTEGER UNIQUE NOT NULL AUTO_INCREMENT,
@@ -56,7 +57,7 @@
     ALTER TABLE user_apps ADD FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE on DELETE CASCADE;
     ALTER TABLE user_apps ADD FOREIGN KEY (app_id) REFERENCES apps(id) ON UPDATE CASCADE on DELETE CASCADE;
 
-    insert into user_apps(user_id, app_id) VALUES ('1','1'), ('1','2');
+    insert into user_apps(user_id, app_id) VALUES ('1','1'), ('1','2'),('2','1'), ('2','2');
 
     CREATE TABLE `apps_accounts`(
         `id` INTEGER UNIQUE NOT NULL AUTO_INCREMENT,
@@ -81,4 +82,3 @@
     );
 
     ALTER TABLE historic ADD FOREIGN KEY (user_date_id) REFERENCES user_dates(id) ON UPDATE CASCADE on DELETE CASCADE;
-

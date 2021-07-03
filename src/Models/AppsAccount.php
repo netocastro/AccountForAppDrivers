@@ -41,6 +41,6 @@ class AppsAccount extends DataLayer
                 }
             }
         }
-        return $newAccount;   
+        return $newAccount;
     }
 }

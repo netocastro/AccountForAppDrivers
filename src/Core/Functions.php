@@ -1,8 +1,11 @@
 <?php
 
+/**
+ * função para ajudar no debug de informações
+ */
+
 function debug($data)
 {
-
     echo "<pre>";
     var_dump($data);
     echo "</pre>";
@@ -27,15 +30,17 @@ function url($uri = null)
 
 function validateName($name): bool
 {
-
     if (preg_match('/^[a-zA-Z ]+$/', $name)) {
         return true;
     } else {
         return false;
     }
 }
+/**
+ *  função auxiliar para retornar o nome do mês
+ */
 
-function mes($data)
+function mes($data) : string
 {
     switch ($data) {
         case '01':
@@ -62,17 +67,13 @@ function mes($data)
             return 'Novembro';
         case '12':
             return 'Dezembro';
-
         default:
             return 'Valor de mes invalido';
-
-            break;
     }
 }
 
 function validateMoney($money): bool
 {
-
     if (preg_match('/^[0-9]+\,[0-9]{2}$/', $money)) {
         return true;
     } else {
@@ -86,7 +87,6 @@ function validateMoney($money): bool
 
 function validateCpf($cpf): bool
 {
-
     if (preg_match('/^[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}$/', $cpf)) {
         return true;
     } else {
@@ -100,7 +100,6 @@ function validateCpf($cpf): bool
 
 function validateEmail($email): bool
 {
-
     if (preg_match('/^[a-z0-9_\.\-]+@[a-z0-9_\.\-]*[a-z0-9_\.\-]+\.[a-z]{2,4}$/', $email)) {
         return true;
     } else {
@@ -114,7 +113,6 @@ function validateEmail($email): bool
 
 function validatePhone($phone): bool
 {
-
     if (preg_match('/^\([0-9]{2}\)[0-9]{4}\-[0-9]{4}$/', $phone)) {
         return true;
     } else {
@@ -128,7 +126,6 @@ function validatePhone($phone): bool
 
 function validateCellPhone($cellPhone): bool
 {
-
     if (preg_match('/^\([0-9]{2}\)[9][0-9]{4}\-[0-9]{4}$/', $cellPhone)) {
         return true;
     } else {
@@ -156,6 +153,7 @@ function objectToArray($object): array
     } else {
         $teste = [];
         $teste[] = (array)$object->data();
+
         return (array)$teste;
     }
 }
@@ -166,7 +164,6 @@ function objectToArray($object): array
 
 function objectsExist($model, array $data, array $filter): array
 {
-
     $arrayFilter = [];
     $error = [];
     $response = [];
@@ -228,76 +225,4 @@ function objectsExist($model, array $data, array $filter): array
     } else {
         return [];
     }
-}
-
-/**
- * função que verifica se valores existem dentro de um objeto DataLayer DEBUG
- */
-
-function objectsExistEcho($model, array $data, array $filter)
-{
-    $arrayFilter = [];
-    $error = [];
-
-    if (empty($filter)) {
-        $error['filter'] = 'filter empty';
-        print_r($error);
-        return;
-    }
-    foreach ($filter as $key1) {
-        $cont = 0;
-        foreach ($data as $key2 => $value) {
-            if ($key1 == $key2) {
-                $arrayFilter[$key1] = $value;
-                $cont = 1;
-            }
-        }
-        if ($cont == 0) {
-            $error[] = $key1;
-        }
-    }
-    if (!empty($error)) {
-        print_r(["indiceNaoExiste" => $error]);
-        return;
-    }
-    //print_r(['arrayFilter' =>$arrayFilter]);
-    print_r($arrayFilter);
-
-    $response = [];
-
-    foreach ($arrayFilter as $key => $value) {
-        echo "<h1>$key</h1>";
-        echo "<pre>";
-        //print_r($model->find("$key = :$key", "$key=" . $data[$key])->fetch()->data());
-        ($model->find("$key = :$key", "$key=" . $data[$key])->fetch()) ? $response[] = $key : '';
-
-
-        echo "</pre>";
-    }
-    print_r($response);
-}
-
-/*function valueReceiveAccountToday($model, $contaAtual, $id_app, $date_register)
-{
-
-    $appsAccounts = $model->find("id_app = :id_app", "id_app={$id_app}")->limit(6)->fetch(true);
-    $week = new DateTime($date_register);
-
-    if ($week->format('w') == 1) {
-        return $contaAtual;
-    }
-
-    if ($appsAccounts) {
-        foreach ($appsAccounts as $appAccount) {
-            if ((new DateTime($appAccount->date()))->format('W') == $week->format('W')) {
-                $contaAtual -= $appAccount->money;
-            }
-        }
-    }
-    return $contaAtual;
-}*/
-
-
-function balance()
-{
 }

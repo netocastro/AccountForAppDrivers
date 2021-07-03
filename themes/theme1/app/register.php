@@ -17,8 +17,9 @@
             <input type="checkbox" name="apps[]" value="1" class="form-check-input me-1"> Uber
             <input type="checkbox" name="apps[]" value="2" class="form-check-input ms-2 me-1"> 99
             <input type="checkbox" name="apps[]" value="3" class="form-check-input ms-2 me-1"> Cabify
-            <input type="checkbox" name="apps[]" value="4" class="form-check-input ms-2 me-1"> 2v
-            <input type="checkbox" name="apps[]" value="5" class="form-check-input ms-2 me-1"> Extra
+            <input type="checkbox" name="apps[]" value="4" class="form-check-input ms-2 me-1"> Maxim
+            <input type="checkbox" name="apps[]" value="5" class="form-check-input ms-2 me-1"> 2v
+
         </div>
 
         <br>

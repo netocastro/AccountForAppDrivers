@@ -77,7 +77,7 @@ class Request
 		}
 
 		if (!validateCpf($data['cpf'])) {
-			$validateFields['cpf'] = 'Formato de CPF inválido<br>ex: 000.000.000-00';
+			$validateFields['cpf'] = 'Formato de CPF inválido. ex: 000.000.000-00';
 		}
 
 		if ((new User())->find('cpf = :c', "c={$data['cpf']}")->fetch()) {
@@ -120,7 +120,7 @@ class Request
 		}
 
 		foreach ($data['apps'] as $app_id) {
-			if ($app_id != '') { // IF temporario, ate resolver a questão da filtragem do check box na linha 72
+			if ($app_id != '') { // IF temporario, ate resolver a questão da filtragem do check box na linha 60
 				$userApps = new UserApps();
 
 				$userApps->user_id = $user->id;
