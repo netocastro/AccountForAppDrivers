@@ -7,7 +7,7 @@
 function debug($data)
 {
     echo "<pre>";
-    var_dump($data);
+    print_r($data);
     echo "</pre>";
 }
 
@@ -36,11 +36,12 @@ function validateName($name): bool
         return false;
     }
 }
+
 /**
  *  função auxiliar para retornar o nome do mês
  */
 
-function mes($data) : string
+function month($data): string
 {
     switch ($data) {
         case '01':
@@ -68,7 +69,34 @@ function mes($data) : string
         case '12':
             return 'Dezembro';
         default:
-            return 'Valor de mes invalido';
+            return 'Valor de mes inválido';
+    }
+}
+
+/**
+ *  função auxiliar para retornar o nome do dia da semana
+ */
+
+function dayOfWeek($data): string
+{
+    switch ($data) {
+
+        case '1':
+            return 'Seg';
+        case '2':
+            return 'Ter';
+        case '3':
+            return 'Qua';
+        case '4':
+            return 'Qui';
+        case '5':
+            return 'Sex';
+        case '6':
+            return 'Sab';
+        case '7':
+            return 'Dom';
+        default:
+            return 'Dia da semana inválido';
     }
 }
 

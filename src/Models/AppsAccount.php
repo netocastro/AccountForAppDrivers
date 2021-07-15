@@ -23,6 +23,11 @@ class AppsAccount extends DataLayer
         return (new Date())->find('id = :id', "id={$this->dateId()}")->fetch()->date;
     }
 
+    public function appId()
+    {
+        return (new UserApps())->find('id = :id', "id={$this->user_app_id}")->fetch()->app_id;
+    }
+
     public function newAppAccount($moneyApp, $data, $appId)
     {
         $courrentDate = new DateTime($data);
