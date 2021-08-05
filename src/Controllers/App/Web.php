@@ -34,6 +34,13 @@ class Web{
 		]);
 	}
 
+	public function map(){
+		echo $this->view->render('map',[	
+			"title" => "App Gerence | Mapa",
+		]);
+	}
+
+
 	public function logout(){
 		unset($_SESSION['user_id']);
 

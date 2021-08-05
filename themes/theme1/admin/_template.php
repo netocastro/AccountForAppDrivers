@@ -28,7 +28,11 @@
     <script src="<?= url('cdn/libs/bootstrap/bootstrap-5.0.0-beta1-dist/js/bootstrap.min.js'); ?>"></script>
     <script src="<?= url('cdn/libs/jquery/jquery-3.5.1.min.js'); ?>"></script>
     <script src="<?= url('cdn/assets/js/functions.js'); ?>"></script>
+
+
     <?= $v->section('js'); ?>
+
+
 
   </body>
 

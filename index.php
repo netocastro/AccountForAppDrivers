@@ -16,6 +16,7 @@ $router->group(null);
 // ------- Web -------
 $router->get('/','Web:home','app.web.home');
 $router->get('/register','Web:register','app.web.register');
+$router->get('/map','Web:map','app.web.map');
 $router->get('/logout','Web:logout','app.web.logout');
 
 // ------- Request -------

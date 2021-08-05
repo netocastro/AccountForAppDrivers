@@ -1,5 +1,7 @@
 <?php $v->layout('_template'); ?>
 
+
+
 <div class="container mt-5">
 	<div class="row mt-5">
 		<div class="col-md-4"></div>
@@ -11,7 +13,11 @@
 				<div class="d-grid gap-2">
 					<button type="submit" class="btn btn-primary my-2">Login</button>
 				</div>
-				<div class="load text-center"></div>
+				<div class="d-none justify-content-center mt-2 load">
+					<div class="spinner-border text-primary" role="status">
+						<span class="visually-hidden">Loading...</span>
+					</div>
+				</div>
 			</form>
 		</div>
 		<div class="col-md-4"></div>

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
     <div class="container">
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +11,7 @@
                     <a class="nav-link active" aria-current="page" href="<?= $router->route('app.web.home') ?>">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= $router->route('app.web.register') ?>">Registrar-se</a>
+                    <a class="nav-link active" href="<?= $router->route('app.web.register') ?>">Registrar-se</a>
                 </li>
             </ul>
         </div>

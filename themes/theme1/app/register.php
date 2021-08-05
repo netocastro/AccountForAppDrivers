@@ -26,7 +26,11 @@
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary my-2">Enviar</button>
         </div>
-        <div class="load text-center"></div>
+        <div class="d-none justify-content-center mt-2 load">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
         <div id="success"></div>
     </form>
 

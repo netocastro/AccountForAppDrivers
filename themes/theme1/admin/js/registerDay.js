@@ -11,7 +11,7 @@ $(document).ready(function(){
 			dataType: 'JSON',
 			data: $('#form-registerDay').serialize(),
 			beforeSend: function() {
-                        _this.find('.load').html(`<img src="cdn/assets/media/gifs/load.gif" width="80">`);
+                        _this.find('.load').removeClass('d-none').addClass('d-flex');
                   },
 			success: function(data) {
 				validateFields(data, dadosForm); 
@@ -21,7 +21,7 @@ $(document).ready(function(){
 				console.log(error.responseText);
 			}
 		}).always( function() {
-                  _this.find('.load').html("");
+                  _this.find('.load').removeClass('d-flex').addClass('d-none');
             });
 	});
 });
